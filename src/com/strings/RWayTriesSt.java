@@ -102,4 +102,32 @@ public class RWayTriesSt<Value> {
 		}
 
 	}
+
+	public Iterable<String> keysWithPrefix(String prefix) {
+		Queue<String> keys = new LinkedList<>();
+		Node x = get(root, prefix, 0);
+		collect(x, prefix, keys);
+		return keys;
+	}
+
+	public String longestPrefix(String query) {
+
+		int mat = search(root, query, 0, 0);
+		return query.substring(0, mat);
+	}
+
+	private int search(Node x, String query, int length, int d) {
+		if (x == null) {
+			return length;
+		}
+		if (x.value != null) {
+			length = d;
+		}
+		if (d == query.length()) {
+			return length;
+		}
+
+		return search(x.next[query.charAt(d)], query, length, d + 1);
+
+	}
 }
