@@ -15,7 +15,9 @@ public class MainClass {
 		Cat c7 = new Cat("2");
 		Cat c6 = new Cat("7");
 		Cat[] array = new Cat[] { c1, c2, c3, c4, c5, c6, c7 };
-		QuickSorting.sort(array);
+	//	QuickSorting.sort(array);
+		ThreeWayQuickSort obj = new ThreeWayQuickSort();
+		obj.sort(array);
 		for (Cat c : array)
 			System.out.println(c.getColor());
 		

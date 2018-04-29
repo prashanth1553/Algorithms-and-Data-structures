@@ -35,12 +35,14 @@ public class InsertionSort {
 	public static void main(String args[]) {
 
 		
-		Cat c1 = new Cat("c");
-		Cat c2 = new Cat("d");
+
+		Cat c1 = new Cat("a");
+		Cat c2 = new Cat("a");
 		Cat c3 = new Cat("b");
-		Cat c4 = new Cat("z");
+		Cat c4 = new Cat("e");
+		Cat c5 = new Cat("z");
 		
-		Cat[] array = new Cat[] { c1, c2, c3, c4 };
+		Cat[] array = new Cat[] { c1, c2, c3, c4,c5 };
 		InsertionSort.sort(array);
 		for (Cat c : array)
 			System.out.println(c.getColor());
