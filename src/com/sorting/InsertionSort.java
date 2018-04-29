@@ -17,7 +17,7 @@ public class InsertionSort {
 					break;
 				}
 			}
-			
+			exchange(a, i, min);
 		}
 
 	}
@@ -34,13 +34,14 @@ public class InsertionSort {
 
 	public static void main(String args[]) {
 
-		Cat c4 = new Cat("e");
-		Cat c1 = new Cat("a");
+		
+		Cat c1 = new Cat("c");
 		Cat c2 = new Cat("d");
 		Cat c3 = new Cat("b");
+		Cat c4 = new Cat("z");
 		
 		Cat[] array = new Cat[] { c1, c2, c3, c4 };
-		SelectionSorting.sort(array);
+		InsertionSort.sort(array);
 		for (Cat c : array)
 			System.out.println(c.getColor());
 	}
