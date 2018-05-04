@@ -28,7 +28,7 @@ public class Digraph {
 		return adj[v];
 	}
 
-	int V() {
+	public int V() {
 		return V;
 	}
 
