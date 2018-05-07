@@ -4,9 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Graph implements Iterable<Number>{
+public class Graph implements Iterable<Number> {
 
 	private int V;
+	private int E;
 	private List<Integer>[] adj;
 
 	public Graph(int V) {
@@ -20,12 +21,13 @@ public class Graph implements Iterable<Number>{
 	public void addEdge(int v, int w) {
 		adj[v].add(w);
 		adj[w].add(v);
+		E++;
 	}
 
 	public Iterator<Integer> adj(int v) {
 		return adj[v].listIterator();
 	}
-	
+
 	public List<Integer> adjList(int v) {
 		return adj[v];
 	}
