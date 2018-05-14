@@ -37,7 +37,7 @@ public class Digraph {
 		for (int i = 0; i < adj.length; i++) {
 			edges += adj[i].size();
 		}
-		return edges / 2;
+		return edges ;
 	}
 	
 	public Digraph reverse() {

@@ -18,7 +18,7 @@ public class EdgeWeightedGraph {
 			adj[v] = new ArrayList<Edge>();
 		}
 	}
-	
+
 	int V() {
 		return V;
 	}

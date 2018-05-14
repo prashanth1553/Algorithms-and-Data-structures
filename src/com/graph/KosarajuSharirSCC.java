@@ -9,7 +9,7 @@ public class KosarajuSharirSCC {
 	public KosarajuSharirSCC(Digraph G) {
 		marked = new boolean[G.V()];
 		id = new int[G.V()];
-		DepthFirstOrder dfo = new DepthFirstOrder(G);
+		DepthFirstOrder dfo = new DepthFirstOrder(G.reverse());
 		for (int v : dfo.reversePost()) {
 			if (!marked[v]) {
 				dfs(G, v);
