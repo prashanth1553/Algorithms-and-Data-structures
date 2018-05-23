@@ -19,10 +19,10 @@ public class DijakstraShortestPath {
 		for (int i = 0; i < G.V(); i++)
 			distanceTo[i] = Double.MAX_VALUE;
 
-		distanceTo[0] = 0;
+		distanceTo[s] = 0;
 
 		pq = new IndexMinPQ<>(G.V());
-		pq.insert(0, 0.0);
+		pq.insert(s, 0.0);
 
 		while (!pq.isEmpty()) {
 
