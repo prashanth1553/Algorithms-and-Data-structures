@@ -23,6 +23,17 @@ public class DepthFirstOrder {
 			if (!marked[v])
 				dfs(G, v);
 	}
+	
+	 public DepthFirstOrder(DirectedEdgeWeightedGraph G) {
+	        pre    = new int[G.V()];
+	        post   = new int[G.V()];
+	        postorder = new LinkedList<>();
+	        preorder  = new LinkedList<>();
+	        marked    = new boolean[G.V()];
+	        for (int v = 0; v < G.V(); v++)
+	            if (!marked[v]) dfs(G, v);
+	    }
+
 
 	private void dfs(Digraph G, int v) {
 		marked[v] = true;
@@ -37,6 +48,21 @@ public class DepthFirstOrder {
 		post[v] = postCounter++;
 	}
 
+	private void dfs(DirectedEdgeWeightedGraph G, int v) {
+		marked[v] = true;
+		pre[v] = preCounter++;
+		preorder.add(v);
+		for (DirectedEdge e : G.adjList(v)) {
+			int w = e.to();
+			if (!marked[w]) {
+				dfs(G, w);
+			}
+		}
+		postorder.add(v);
+		post[v] = postCounter++;
+	}
+	
+	
 	public Iterable<Integer> post() {
 		return postorder;
 	}
