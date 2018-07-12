@@ -21,33 +21,35 @@ public class FlowEdge {
 		return w;
 	}
 
-	public int other(int v) {
-		if (this.v == v) {
+	public int other(int vertex) {
+		if (this.v == vertex) {
 			return this.w;
 		}
-		if (this.w == v) {
+		if (this.w == vertex) {
 			return this.v;
 		}
 		throw new IllegalArgumentException("wrong vertex");
 	}
 
-	public double residualCapacityTo(int v) {
-		if (this.v == v) {
+	public double residualCapacityTo(int vertex) {
+		if (this.v == vertex) {
 			return flow;
-		} else {
+		} else if (w == vertex) {
 
 			return capacity - flow;
 		}
 
+		throw new IllegalArgumentException("Illegal vertex");
 	}
 
-	public void addResidualFlowTo(int v, double delta) {
-		if (this.v == v) {
+	public void addResidualFlowTo(int vertex, double delta) {
+		if (this.v == vertex) {
 			flow -= delta;
 
-		} else {
+		} else if (this.w == vertex) {
 			flow += delta;
 		}
 
+		throw new IllegalArgumentException("Illegal vertex");
 	}
 }

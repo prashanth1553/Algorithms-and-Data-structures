@@ -1,31 +1,31 @@
 package com.datastructures;
 
-public class MyStack {
+public class MyStack<Item> {
 
 	Node currentItem;
 
 	class Node {
 
-		public Node(String value, Node next) {
+		public Node(Item value, Node next) {
 			this.value = value;
 			this.next = next;
 		}
 
-		String value;
+		Item value;
 
 		Node next;
 	}
 
-	public void push(String str) {
+	public void push(Item str) {
 
 		Node newNode = new Node(str, currentItem);
 		currentItem = newNode;
 
 	}
 
-	public String pop() {
+	public Item pop() {
 
-		String str = currentItem.value;
+		Item str = currentItem.value;
 		currentItem = currentItem.next;
 		return str;
 

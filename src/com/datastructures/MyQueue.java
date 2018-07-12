@@ -1,57 +1,52 @@
 package com.datastructures;
 
-public class MyQueue {
+public class MyQueue<Item> {
 
-	Node firstItem = null;
-	Node lastItem = null;
+	private Node first, last;
 
 	class Node {
 
-		public Node(String value, Node next) {
+		public Node(Item value, Node next) {
 			this.value = value;
 			this.next = next;
 		}
 
-		String value;
+		Item value;
 
 		Node next;
 	}
 
-	public void enqueue(String str) {
+	public void enqueue(Item value) {
 
-		Node newNode = new Node(str, null);
-		if (firstItem == null) {
-			firstItem = newNode;
+		Node newNode = new Node(value, null);
+		if (last == null) {
+			first = last = newNode;
 		} else {
-			if (firstItem.next == null) {
-				firstItem.next = newNode;
-			} else {
-				if (lastItem == null) {
-					lastItem = newNode;
-				} else {
-					lastItem.next = newNode;
-				}
-
-			}
+			last.next = newNode;
+			last = newNode;
 		}
+
 	}
 
-	public String dequeue() {
-
-		String str = firstItem.value;
-		firstItem = firstItem.next;
-		return str;
-
+	public Item dequeue() {
+		if (first == null) {
+			return null;
+		}
+		Item value = first.value;
+		first = first.next;
+		if (first == null) {
+			last = null;
+		}
+		return value;
 	}
 
 	public static void main(String[] args) {
-		MyQueue myStack = new MyQueue();
+		MyQueue<String> myStack = new MyQueue();
 		myStack.enqueue("P");
 		myStack.enqueue("r");
 		myStack.enqueue("a");
 		System.out.println(myStack.dequeue());
 		myStack.enqueue("r");
-		System.out.println(myStack.dequeue());
 		System.out.println(myStack.dequeue());
 		System.out.println(myStack.dequeue());
 	}

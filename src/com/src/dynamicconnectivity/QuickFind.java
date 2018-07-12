@@ -1,10 +1,10 @@
 package com.src.dynamicconnectivity;
 
-public class QuickFindUF {
+public class QuickFind {
 
 	private int [] id;
 	
-	public QuickFindUF(int n){
+	public QuickFind(int n){
 		id = new int[n];
 		for(int i=0;i<n;i++){
 			id[i] = i;

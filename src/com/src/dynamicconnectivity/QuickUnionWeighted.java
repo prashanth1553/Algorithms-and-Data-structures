@@ -1,16 +1,17 @@
 package com.src.dynamicconnectivity;
 
 /* joing small tree under large trees */
-public class QuickUnionUFWeighted {
+public class QuickUnionWeighted {
 
 	private int[] id;
 	private int[] size;
 
-	public QuickUnionUFWeighted(int n) {
+	public QuickUnionWeighted(int n) {
 		id = new int[n];
 		size = new int[n];
 		for (int i = 0; i < n; i++) {
 			id[i] = i;
+			size[i] = 1;
 		}
 	}
 
@@ -21,13 +22,14 @@ public class QuickUnionUFWeighted {
 	public void union(int p, int q) {
 		int pr = root(p);
 		int qr = root(q);
-		// joining small tree under large trees time complexity reduces logn as depth increase tree size doubles
+		// joining small tree under large trees time complexity reduces logn as
+		// depth increase tree size doubles
 		if (size[pr] > size[qr]) {
 			id[qr] = pr;
-			size[pr] = size[pr]+size[qr];
+			size[pr] = size[pr] + size[qr];
 		} else {
 			id[pr] = qr;
-			size[qr] = size[pr]+size[qr];
+			size[qr] = size[pr] + size[qr];
 		}
 
 	}

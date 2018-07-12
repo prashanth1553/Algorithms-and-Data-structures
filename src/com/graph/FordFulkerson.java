@@ -14,13 +14,13 @@ public class FordFulkerson {
 		value = 0;
 
 		while (hasAugmentingPath(G, s, t)) {
-			double bottle =  Double.POSITIVE_INFINITY;
-			for (int v = t; v != t; v = edgeTo[v].other(v)) {
+			double bottle = Double.POSITIVE_INFINITY;
+			for (int v = t; v != s; v = edgeTo[v].other(v)) {
 
 				bottle = Math.min(bottle, edgeTo[v].residualCapacityTo(v));
 			}
 
-			for (int v = t; v != t; v = edgeTo[v].other(v)) {
+			for (int v = t; v != s; v = edgeTo[v].other(v)) {
 				edgeTo[v].addResidualFlowTo(v, bottle);
 			}
 

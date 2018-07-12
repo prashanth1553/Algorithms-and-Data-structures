@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
 
-import com.src.dynamicconnectivity.QuickUnionUFWeighted;
+import com.src.dynamicconnectivity.QuickUnionWeighted;
 
 public class KruskalMST {
 
@@ -18,7 +18,7 @@ public class KruskalMST {
 		for (Edge e : G.edges()) {
 			pq.add(e);
 		}
-		QuickUnionUFWeighted uf = new QuickUnionUFWeighted(G.V());
+		QuickUnionWeighted uf = new QuickUnionWeighted(G.V());
 		while (!pq.isEmpty() && mst.size() < G.V()-1) {
 			Edge e = pq.poll();
 			int v = e.either();
