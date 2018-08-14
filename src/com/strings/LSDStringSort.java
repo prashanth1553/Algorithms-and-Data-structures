@@ -7,24 +7,29 @@ public class LSDStringSort {
 		int R = 256;
 		int N = a.length;
 		String[] aux = new String[N];
-		
+
 		for (int ch = w - 1; ch >= 0; ch--) {
 
 			int[] count = new int[R + 1];
-			for (int j = 0; j < N; j++) {
-				count[a[j].charAt(ch) + 1]++;
-			}
-			for (int j = 0; j < R; j++) {
-				count[j + 1] += count[j];
-			}
-			for (int j = 0; j < N; j++) {
-				int p = count[a[j].charAt(ch)]++;
-				aux[p] = a[j];
-			}
-			for (int j = 0; j < a.length; j++) {
-				a[j] = aux[j];
+
+			for (int i = 0; i < a.length; i++) {
+
+				count[a[i].charAt(ch) + 1]++;
+
 			}
 
+			for (int r = 0; r < R; r++) {
+				count[r + 1] += count[r];
+
+			}
+			for (int i = 0; i < a.length; i++) {
+
+				aux[count[a[i].charAt(ch) ]++] = a[i];
+			}
+
+			for (int i = 0; i < a.length; i++) {
+				a[i] = aux[i];
+			}
 		}
 
 	}

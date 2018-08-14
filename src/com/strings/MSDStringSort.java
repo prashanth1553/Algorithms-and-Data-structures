@@ -3,6 +3,7 @@ package com.strings;
 public class MSDStringSort {
 
 	int R = 256;
+
 	public void sort(String[] a, String[] aux, int lo, int hi, int d) {
 
 		if (hi <= lo) {
@@ -19,18 +20,18 @@ public class MSDStringSort {
 			aux[count[charAt(a[i], d) + 1]++] = a[i];
 		}
 		for (int i = lo; i <= hi; i++) {
-			a[i] = aux[i-lo];
+			a[i] = aux[i - lo];
 		}
 
 		for (int r = 0; r < R + 1; r++) {
-			sort(a, aux, lo+count[r], lo+count[r + 1] - 1, d + 1);
+			sort(a, aux, lo + count[r], lo + count[r + 1] - 1, d + 1);
 		}
 
 	}
 
 	public void sort(String[] a) {
 		String[] aux = new String[a.length];
-		sort(a, aux, 0, a.length-1 , 0);
+		sort(a, aux, 0, a.length - 1, 0);
 
 	}
 
