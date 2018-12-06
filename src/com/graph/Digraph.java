@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Digraph {
 	private int V;
-	private List<Integer>[] adj;
+	private List<Integer> adj [];
 
 	public Digraph(int V) {
 		this.V = V;

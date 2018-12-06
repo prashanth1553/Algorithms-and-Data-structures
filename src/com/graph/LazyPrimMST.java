@@ -22,6 +22,7 @@ public class LazyPrimMST {
 				continue;
 			}
 			mst.add(e);
+			weigth += e.weigth;
 			if (!marked[v]) {
 				visit(G, v, edges);
 			}

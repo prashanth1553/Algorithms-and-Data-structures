@@ -13,7 +13,7 @@ public class ShellSort {
 
 		while (h >= 1) {
 			for (int i = h; i < N; i++) {
-				for (int j = i; j > h; j -= h) {
+				for (int j = i; j >= h; j -= h) {
 					if (less(a[j], a[j - h])) {
 						exchange(a, j, j - h);
 					} else {

@@ -30,8 +30,8 @@ public class MyStack<Item> {
 		return str;
 
 	}
-	
-	public static void main(String [] args){
+
+	public static void main(String[] args) {
 		MyStack myStack = new MyStack();
 		myStack.push("P");
 		myStack.push("r");

@@ -135,6 +135,7 @@ public class IndexMinPQ<Key extends Comparable<Key>> implements Iterable<Integer
 		keys[min] = null; // to help with garbage collection
 		pq[n + 1] = -1; // not needed
 		return min;
+		
 	}
 
 	/**

@@ -68,6 +68,30 @@ public class RWayTriesSt<Value> {
 		delete(x.next[key.charAt(d)], key, d + 1);
 	}
 
+	public Node delete2(Node x, String key, int d) {
+		if (x == null) {
+			return null;
+		}
+		if (key.length() == d) {
+			x.value = null;
+		} else {
+			x.next[key.charAt(d)] = delete2(x.next[key.charAt(d)], key, d + 1);
+		}
+		if (x.value != null) {
+			return x;
+		}
+
+		for (char c = 0; c < 256; c++) {
+
+			if (x.next[c] != null) {
+				return x;
+			}
+
+		}
+
+		return null;
+	}
+
 	public static void main(String args[]) {
 		String[] ax = new String[10];
 		RWayTriesSt<String> map = new RWayTriesSt<>();
@@ -90,15 +114,17 @@ public class RWayTriesSt<Value> {
 		return keys;
 	}
 
-	private void collect(Node x, String prefix, Queue<String> q) {
+	private void collect(Node x, String prefix, Queue<String> keys) {
+
 		if (x == null) {
 			return;
 		}
 		if (x.value != null) {
-			q.add(prefix);
+			keys.add(prefix);
 		}
-		for (char c = 0; c < R; c++) {
-			collect(x.next[c], prefix + c, q);
+		for (char c = 0; c < 256; c++) {
+
+			collect(x.next[c], prefix + c, keys);
 		}
 
 	}
@@ -116,18 +142,46 @@ public class RWayTriesSt<Value> {
 		return query.substring(0, mat);
 	}
 
-	private int search(Node x, String query, int length, int d) {
+	private int search(Node x, String query, int l, int d) {
 		if (x == null) {
-			return length;
+			return l;
 		}
 		if (x.value != null) {
-			length = d;
+			l = d;
 		}
-		if (d == query.length()) {
-			return length;
+		if (query.length() == d) {
+			return l;
+		}
+		return search(x.next[query.charAt(d)], query, l, d + 1);
+	}
+
+	public Iterable<String> keysThatMatch(String key) {
+		Queue<String> keys = new LinkedList<>();
+		collect(root, key, keys);
+		return keys;
+	}
+
+	private void collect(Node x, String prefix, String key, int d, Queue<String> keys) {
+		if (x == null) {
+			return;
 		}
 
-		return search(x.next[query.charAt(d)], query, length, d + 1);
+		if (d == key.length()) {
+			if (x.value != null) {
+				keys.add(prefix);
+			}
+			return;
+		}
+		char c = prefix.charAt(d);
+
+		if (c == '.') {
+			for (char r = 0; r < 256; r++) {
+				collect(x.next[r], prefix + r, key, d + 1, keys);
+			}
+
+		} else {
+			collect(x.next[key.charAt(d)], prefix, key + key.charAt(d), d + 1, keys);
+		}
 
 	}
 }

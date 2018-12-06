@@ -4,27 +4,33 @@ public class MSDStringSort {
 
 	int R = 256;
 
-	public void sort(String[] a, String[] aux, int lo, int hi, int d) {
+	private void sort(String a[], String aux[], int lo, int high, int d) {
 
-		if (hi <= lo) {
+		if (high <= lo) {
 			return;
 		}
-		int count[] = new int[R + 2];
-		for (int i = lo; i <= hi; i++) {
-			count[charAt(a[i], d) + 2]++;
+		int r[] = new int[R + 2];
+		for (int i = lo; i <= high; i++) {
+
+			r[charAt(a[i], d) + 2]++;
 		}
-		for (int r = 0; r < R + 1; r++) {
-			count[r + 1] += count[r];
+		for (int i = 0; i < R + 1; i++) {
+
+			r[i + 1] += r[i];
 		}
-		for (int i = lo; i <= hi; i++) {
-			aux[count[charAt(a[i], d) + 1]++] = a[i];
+		for (int i = lo; i <= high; i++) {
+
+			aux[r[charAt(a[i], d) + 1]++] = a[i];
+
 		}
-		for (int i = lo; i <= hi; i++) {
+
+		for (int i = lo; i <= high; i++) {
 			a[i] = aux[i - lo];
 		}
 
-		for (int r = 0; r < R + 1; r++) {
-			sort(a, aux, lo + count[r], lo + count[r + 1] - 1, d + 1);
+		for (int i = 0; i < R + 1; i++) {
+
+			sort(a, aux, lo + r[i], lo + r[i + 1] - 1, d + 1);
 		}
 
 	}

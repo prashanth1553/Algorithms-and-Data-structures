@@ -86,22 +86,22 @@ public class Perculates {
 
 	private void openAHole(int open) {
 		// opening the left
-		if ((open%gridSize)>0) {
+		if ((open % gridSize) > 0) {
 			union(open - 1, open);
 		}
 		// opening the right
-		if ((open%gridSize)<(gridSize-1)) {
+		if ((open % gridSize) < (gridSize - 1)) {
 			union(open, open + 1);
 		}
 
 		// opening the top
-		if ((open - gridSize) >= 0 ) {
+		if ((open - gridSize) >= 0) {
 			union(open, open - gridSize);
 		}
 
 		// opening the bottom
-		if ((open + gridSize) < gridSize*gridSize) {
-			union(open, open +gridSize);
+		if ((open + gridSize) < gridSize * gridSize) {
+			union(open, open + gridSize);
 		}
 
 	}
