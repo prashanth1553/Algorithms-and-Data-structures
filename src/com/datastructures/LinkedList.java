@@ -44,7 +44,8 @@ public class LinkedList<Item> {
 
 	public void delete(Item value) {
 
-		if (head == null) {
+		if (head != null && head.equals(value)) {
+			head = head.next;
 			return;
 		}
 		Node previous = head;
