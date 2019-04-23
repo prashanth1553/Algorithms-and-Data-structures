@@ -1,5 +1,8 @@
 package com.datastructures;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class MapWithBinarySearchTree<Key extends Comparable<Key>, Value> {
 
 	public Node root;
@@ -100,26 +103,26 @@ public class MapWithBinarySearchTree<Key extends Comparable<Key>, Value> {
 			return null;
 		}
 		int diff = x.key.compareTo(key);
-		if(diff == 0){
+		if (diff == 0) {
 			return x;
 		}
-		Node f ;
-		if(diff > 0){
-			if(x.left == null){
+		Node f;
+		if (diff > 0) {
+			if (x.left == null) {
 				return null;
 			}
 			f = floor(x.left, key);
-		}else{
-			if(x.right == null){
+		} else {
+			if (x.right == null) {
 				return x;
 			}
 			f = floor(x.right, key);
 		}
-		if(f != null){
+		if (f != null) {
 			return f;
 		}
 		return x;
-		
+
 	}
 
 	class Node {
@@ -131,6 +134,31 @@ public class MapWithBinarySearchTree<Key extends Comparable<Key>, Value> {
 		public Node(Key key, Value value) {
 			this.key = key;
 			this.value = value;
+		}
+
+	}
+
+	public Iterable<Key> keys(Key lo, Key hi) {
+		Queue<Key> queue = new LinkedList<>();
+
+		return queue;
+	}
+
+	public void keys(Node x, Key lo, Key hi, Queue<Key> queue) {
+		if (x == null) {
+			return;
+		}
+		int complo = lo.compareTo(x.key);
+		int comhi = hi.compareTo(x.key);
+		if (complo < 0) {
+			keys(x.left, lo, hi, queue);
+		}
+		if (complo <= 0 && comhi >= 0) {
+			queue.add(x.key);
+		}
+
+		if (comhi > 0) {
+			keys(x.right, lo, hi, queue);
 		}
 
 	}
@@ -148,10 +176,10 @@ public class MapWithBinarySearchTree<Key extends Comparable<Key>, Value> {
 		System.out.println(map.get(new StudentAge(21)));
 		System.out.println(map.getSmallest().getId());
 		StudentAge floor = map.floor(new StudentAge(1f));
-		if(floor != null){
-			System.out.println("florr++++"+floor.getId());
-		}else{
-			System.out.println("florr++++"+null);
+		if (floor != null) {
+			System.out.println("florr++++" + floor.getId());
+		} else {
+			System.out.println("florr++++" + null);
 		}
 	}
 

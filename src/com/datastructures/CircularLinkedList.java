@@ -66,5 +66,14 @@ public class CircularLinkedList<Item> {
 
 		return value;
 	}
+	
+	public static void main(String args[]) {
+		Integer a = 128;
+		Integer b = 128;
+		check(a, b);
+	}
 
+	public static void check(Integer a ,Integer b) {
+		System.out.println(a==b);
+	}
 }

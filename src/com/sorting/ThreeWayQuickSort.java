@@ -18,7 +18,7 @@ public class ThreeWayQuickSort {
 			return;
 		}
 		int i = lo;
-		int lt = 0, gt = hi;
+		int lt = lo, gt = hi;
 		Comparable v = a[lo];
 		while (i <= gt) {
 			int d = v.compareTo(a[i]);
