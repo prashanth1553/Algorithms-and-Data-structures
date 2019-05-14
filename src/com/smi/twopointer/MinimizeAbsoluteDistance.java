@@ -1,4 +1,4 @@
-package com.smi;
+package com.smi.twopointer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

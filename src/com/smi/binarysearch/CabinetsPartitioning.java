@@ -1,4 +1,4 @@
-package com.smi;
+package com.smi.binarysearch;
 
 import java.util.Scanner;
 
@@ -60,6 +60,6 @@ public class CabinetsPartitioning {
 			} 
 
 		}
-		return workersCount < numberOfWorkers;
+		return workersCount <= numberOfWorkers;
 	}
 }

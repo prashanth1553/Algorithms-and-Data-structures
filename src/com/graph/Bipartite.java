@@ -9,6 +9,7 @@ public class Bipartite {
 	public Bipartite(Graph G) {
 		marked = new boolean[G.V()];
 		color = new boolean[G.V()];
+		dfs(G, 0);
 
 	}
 
@@ -17,6 +18,7 @@ public class Bipartite {
 		for (int w : G.adjList(v)) {
 			if (!marked[w]) {
 				color[w] = !color[v];
+				dfs(G, v);
 			} else if (color[w] == color[v]) {
 				isBipartite = false;
 			}

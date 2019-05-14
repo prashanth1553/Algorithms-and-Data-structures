@@ -1,4 +1,4 @@
-package com.smi;
+package com.smi.binarysearch;
 
 import java.util.Arrays;
 import java.util.Scanner;
