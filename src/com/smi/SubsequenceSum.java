@@ -63,12 +63,35 @@ public class SubsequenceSum {
 					}
 				}
 			}
-			for (long e : firstPart) {
-				SortedMap<Long, Long> between = secondHalf.subMap(A - e, true, B - e, true);
-				for (Entry<Long, Long> entry : between.entrySet()) {
-					count += entry.getValue();
-				}
+
+			// in below approach we need to iterate SortedMap again which cosumes lot of
+			// time
+
+//			for (long e : firstPart) {
+//				SortedMap<Long, Long> between = secondHalf.subMap(A - e, true, B - e, true);
+//				for (Entry<Long, Long> entry : between.entrySet()) {
+//					count += entry.getValue();
+//				}
+//			}
+
+			// prefix sum technique
+
+			long sum = 0;
+			TreeMap<Long, Long> cumSecondHalf = new TreeMap<>();
+			for (Entry<Long, Long> e : secondHalf.entrySet()) {
+				sum += e.getValue();
+				cumSecondHalf.put(e.getKey(), sum);
 			}
+
+			for (long e : firstPart) {
+				Long a = cumSecondHalf.ceilingKey(A - e);
+				Long b = cumSecondHalf.floorKey(B - e);
+				if (a != null && b != null) {
+					count += cumSecondHalf.get(b) - cumSecondHalf.get(a) + secondHalf.get(a);
+				}
+
+			}
+
 			if (isWithinLimits(A, B, 0)) {
 				count++;
 			}

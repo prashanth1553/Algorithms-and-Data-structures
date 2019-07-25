@@ -14,51 +14,61 @@ public class PrimeGenerator {
 			String numbers[] = bufferedReader.readLine().trim().split(" ");
 			int a = Integer.parseInt(numbers[0]);
 			int b = Integer.parseInt(numbers[1]);
-			int sqrtOfB = (int) Math.round(Math.sqrt(b))+1;
-			boolean primesTillB[] = new boolean[sqrtOfB];
+			int sqrtOfB = (int) Math.round(Math.sqrt(b));
+			boolean primesTillB[] = new boolean[sqrtOfB+1];
 			Arrays.fill(primesTillB, true);
 			primesTillB[0] = false;
 			primesTillB[1] = false;
-			for (int i = 2; i <= Math.sqrt(sqrtOfB); i++) {
+
+			for (int i = 2; i <= sqrtOfB; i++) {
 				if (primesTillB[i]) {
-					for (int j = i * i; j < primesTillB.length; j += i) {
+					for (int j = i * i; j <= sqrtOfB; j = j + i) {
 						primesTillB[j] = false;
 					}
 
 				}
 
 			}
+
 			boolean finalPrimes[] = new boolean[b - a + 1];
-			Arrays.fill(finalPrimes, Boolean.TRUE);
-			for (int i = 2; i <= Math.sqrt(b); i++) {
+			Arrays.fill(finalPrimes, true);
+			if(a == 1) {
+				finalPrimes[0] = false;
+			}
+			for (int i = 2; i <= sqrtOfB; i++) {
 				if (primesTillB[i]) {
-					int markingStart = i; // condier it as number
-					int x = 0;
-					if (a  == markingStart) {
-						x = markingStart;
-					} 
-					else if (a % markingStart == 0) {
-						x = 0;
-					} else if (a < markingStart) {
-						x = 2 * markingStart - a;
+					int indexToStart = 0;
+					int actualIndexToStart = i * i;
+					if (actualIndexToStart == a) {
+						indexToStart = 0;
+					} else if (actualIndexToStart > a) {
+						indexToStart = actualIndexToStart - a ;
 					} else {
-						x = markingStart - a % markingStart;
-						x +=markingStart;
+						int r = a % i;
+						indexToStart = r == 0 ? 0 : i - r;
 					}
 
-					for (int j = x; j <= (b - a); j = j + i) {
+					for (int j = indexToStart; j < finalPrimes.length; j = j + i) {
 						finalPrimes[j] = false;
 					}
-				}
 
+				}
 			}
+
+			int count = 0;
 			for (int i = 0; i < finalPrimes.length; i++) {
 				if (finalPrimes[i]) {
-					System.out.println(a + i);
+//					System.out.println(a + i + " , ");
+					count++;
 				}
 			}
-			System.out.println();
+			System.out.println(count);
+
 		}
 	}
 
+	// 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97
+	// 13
+	
+	// 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, and 199.
 }
