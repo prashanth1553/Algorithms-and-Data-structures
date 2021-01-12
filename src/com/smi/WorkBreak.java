@@ -10,17 +10,30 @@ public class WorkBreak {
 			System.out.println(newStatement);
 		}
 		String word = "";
-		int previousL = newStatement.length();
 		for (int i = currentLength; i < statement.length(); i++) {
 			word = statement.substring(currentLength, i + 1);
 			if (dictionary.contains(word)) {
-				newStatement = newStatement + " " + word;
-				breakWord(dictionary, statement, i + 1, newStatement);
-				newStatement = newStatement.substring(0, previousL);
+				breakWord(dictionary, statement, i + 1, newStatement + " " + word);
 			}
 			word = "";
 		}
 
+	}
+
+	public void breakWord2(Set<String> dictionary, String statement, int starIndex, int endIndex, String newStatement) {
+		if (endIndex > statement.length() - 1) {
+			return;
+		}
+		String sub = statement.substring(starIndex, endIndex + 1);
+		boolean con = dictionary.contains(statement.substring(starIndex, endIndex + 1));
+		if (con) {
+			if (con && endIndex == statement.length() - 1) {
+				System.out.println("Logic 2#: " + newStatement + " " + sub);
+				return;
+			}
+			breakWord2(dictionary, statement, endIndex + 1, endIndex + 1, newStatement + " " + sub);
+		}
+		breakWord2(dictionary, statement, starIndex, endIndex + 1, newStatement);
 	}
 
 	public static void main(String args[]) {
@@ -35,9 +48,11 @@ public class WorkBreak {
 		WorkBreak obj = new WorkBreak();
 		String statement = "iloveicecreamandmango";
 		obj.breakWord(dic, statement, 0, "");
+		obj.breakWord2(dic, statement, 0, 0, "");
 		System.out.println("## 2 ###");
 		String statement1 = "ilovesamsungmobile";
 		obj.breakWord(dic, statement1, 0, "");
+		obj.breakWord2(dic, statement1, 0, 0, "");
 	}
 
 }

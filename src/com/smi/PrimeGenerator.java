@@ -19,8 +19,8 @@ public class PrimeGenerator {
 			Arrays.fill(primesTillB, true);
 			primesTillB[0] = false;
 			primesTillB[1] = false;
-
-			for (int i = 2; i <= sqrtOfB; i++) {
+			int sqrtsqrtOfB = (int) Math.round(sqrtOfB);
+			for (int i = 2; i <= sqrtsqrtOfB; i++) {
 				if (primesTillB[i]) {
 					for (int j = i * i; j <= sqrtOfB; j = j + i) {
 						primesTillB[j] = false;

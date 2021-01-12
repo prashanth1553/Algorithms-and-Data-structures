@@ -1,13 +1,13 @@
 package com.sorting;
 
 public class QuickSorting {
-	
+
 	public static int partitionCount = 0;
 
 	public static int partition(Comparable[] a, int lo, int hi) {
 
 		partitionCount++;
-		int i = lo, j = hi+1;
+		int i = lo, j = hi + 1;
 
 		while (true) {
 			while (less(a[++i], a[lo])) {
@@ -44,7 +44,7 @@ public class QuickSorting {
 
 	public static void sort(Comparable[] a) {
 
-		sort(a, 0, a.length-1);
+		sort(a, 0, a.length - 1);
 
 	}
 

@@ -1,6 +1,6 @@
 package com.designpatterns.factory;
 
-public class VehiclePattern {
+public class VehicleFactory {
 
 	public static Vehicle getVehicle(VehicleType type) {
 

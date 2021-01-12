@@ -1,0 +1,16 @@
+Single responsibility principle
+https://howtodoinjava.com/design-patterns/single-responsibility-principle/
+
+EmployeeStore class is responsible for storing employees and sending an email
+
+EmployeeStore's method is  sendEmail(Employee employee, String content);
+If you want want to send html content we need to add one more method sendHtml content. 
+but what happens when we are asked to support different protocols for sending emails for both content types. 
+Overall class will look very ugly and difficult to read and maintain.
+
+Solution
+1. IEmailSender
+2. IEmailContent
+
+Advantages:
+1. Easy to understand and maintain 2. Improved usability 3. Easy to test

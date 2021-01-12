@@ -30,7 +30,7 @@ public class ResizingArrayQueue<Item> {
 			resize(items.length * 2);
 		}
 		items[last++] = item;
-		if (last == items.length) {
+		if (last == items.length) { // wrap around
 			last = 0;
 		}
 		n++;
@@ -43,7 +43,7 @@ public class ResizingArrayQueue<Item> {
 		Item item = items[first];
 		items[first++] = null;
 		n--;
-		if (first == items.length)
+		if (first == items.length) // wrap around
 			first = 0;
 		if (n > 0 && n == items.length / 4) {
 			resize(items.length / 2);

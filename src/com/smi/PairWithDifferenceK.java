@@ -19,9 +19,9 @@ public class PairWithDifferenceK {
 				numbers[r] = Integer.parseInt(row[r]);
 			}
 			Arrays.sort(numbers);
-			int p1 = 0, p2 = 1;
+			int p1 = 0, p2 = 0;
 			boolean isFound = false;
-			while (p2 < size) {
+			while (p2 < size && p1 < size) {
 				int diff = numbers[p2] - numbers[p1];
 				if (diff == key) {
 					isFound = true;

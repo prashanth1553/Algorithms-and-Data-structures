@@ -57,4 +57,5 @@ public class AggressiveCows {
 		}
 		return placedCowCount >= totalCowCount;
 	}
+	
 }

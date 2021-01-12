@@ -1,0 +1,12 @@
+Interface Segregation Principle
+
+Larger interfaces should be split into smaller ones. 
+By doing so, we can ensure that implementing classes only need to be concerned about the methods that are of interest to them.
+
+
+Take an example. Developer Alex created an interface Reportable and added two methods generateExcel() and generatedPdf(). 
+Now client ‘A’ wants to use this interface but he intends to use reports only in PDF format and not in excel. 
+Will he be able to use the functionality easily?
+
+NO. He will have to implement both the methods, out of which one is an extra burden put on him by the designer of the software. 
+Either he will implement another method or leave it blank. This is not a good design.

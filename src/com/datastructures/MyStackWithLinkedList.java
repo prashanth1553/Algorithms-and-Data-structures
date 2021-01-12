@@ -1,12 +1,12 @@
 package com.datastructures;
 
-public class MyStackWithLinkedList {
+public class MyStackWithLinkedList<T> {
 
 	Node currentItem = null;
 
 	class Node {
 
-		String item;
+		T item;
 		Node next;
 	}
 
@@ -14,7 +14,7 @@ public class MyStackWithLinkedList {
 		return currentItem == null;
 	}
 
-	public void push(String s) {
+	public void push(T s) {
 
 		Node temp = currentItem;
 		currentItem = new Node();
@@ -22,8 +22,8 @@ public class MyStackWithLinkedList {
 		currentItem.next = temp;
 	}
 
-	public String pop() {
-		String temp = null;
+	public T pop() {
+		T temp = null;
 		if (currentItem != null) {
 			temp = currentItem.item;
 			currentItem = currentItem.next;
@@ -34,7 +34,7 @@ public class MyStackWithLinkedList {
 
 	public static void main(String args[]) {
 
-		MyStackWithLinkedList obj = new MyStackWithLinkedList();
+		MyStackWithLinkedList<String> obj = new MyStackWithLinkedList<String>();
 		System.out.println("*******" + obj.pop());
 		obj.push("s");
 		System.out.println("*******" + obj.pop());

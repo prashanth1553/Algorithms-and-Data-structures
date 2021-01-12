@@ -14,7 +14,7 @@ public class CompleteBinaryTree {
 	private static final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
 	public static void main(String args[]) throws NumberFormatException, IOException {
-		
+
 //		1
 //		6
 //		20 10 30 5 15 4
@@ -119,46 +119,77 @@ public class CompleteBinaryTree {
 
 			return isComplete;
 		}
-		
-		public boolean isComplete(Node root) {
-            Queue<Node> items = new LinkedList<>();
-            items.add(root);
-            int size = 1;
-            boolean isComplete = true;
-            while (!items.isEmpty()) {
-                while (size > 0) {
-                    Node c = items.poll();
-                    if (c.left == null && c.right != null) {
-                        isComplete = false;
-                        break;
-                    }
-                    if (c.left != null && c.right == null && c.left.left != null) {
-                        isComplete = false;
-                        break;
-                    }
-                    if (c.left == null && c.right == null && !items.isEmpty()) {
-                        Node n = items.peek();
-                        if (n.left != null || n.right != null) {
-                            isComplete = false;
-                            break;
-                        }
-                    }
-                    if (c.left != null) {
-                        items.add(c.left);
-                    }
-                    if (c.right != null) {
-                        items.add(c.right);
-                    }
-                    size--;
-                }
-                if (!isComplete) {
-                    break;
-                }
-                size = items.size();
-            }
 
-            return isComplete;
-        }
+		public boolean isComplete(Node root) {
+			Queue<Node> items = new LinkedList<>();
+			items.add(root);
+			int size = 1;
+			boolean isComplete = true;
+			while (!items.isEmpty()) {
+				while (size > 0) {
+					Node c = items.poll();
+					if (c.left == null && c.right != null) {
+						isComplete = false;
+						break;
+					}
+					if (c.left != null && c.right == null && c.left.left != null) {
+						isComplete = false;
+						break;
+					}
+					if (c.left == null && c.right == null && !items.isEmpty()) {
+						Node n = items.peek();
+						if (n.left != null || n.right != null) {
+							isComplete = false;
+							break;
+						}
+					}
+					if (c.left != null) {
+						items.add(c.left);
+					}
+					if (c.right != null) {
+						items.add(c.right);
+					}
+					size--;
+				}
+				if (!isComplete) {
+					break;
+				}
+				size = items.size();
+			}
+
+			return isComplete;
+		}
+	}
+
+	int headIndex = 0;
+
+	public TreeNode sortedArrayToBST(final int[] A) {
+
+		return convertToBST(A, A.length);
+	}
+
+	private TreeNode convertToBST(int[] A, int length) {
+		if (length <= 0) {
+			return null;
+		}
+		TreeNode left = convertToBST(A, length / 2);
+		TreeNode root = new TreeNode(A[headIndex]);
+		root.left = left;
+		headIndex++;
+		root.right = convertToBST(A, length - length / 2 - 1);
+		return root;
+	}
+
+	class TreeNode {
+		int val;
+		TreeNode left;
+		TreeNode right;
+
+		TreeNode(int x) {
+			val = x;
+			left = null;
+			right = null;
+		}
 	}
 
 }
