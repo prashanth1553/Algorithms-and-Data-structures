@@ -3,7 +3,7 @@ package com.smi;
 import java.util.HashSet;
 import java.util.Set;
 
-public class WorkBreak {
+public class WordBreak {
 
 	public void breakWord(Set<String> dictionary, String statement, int currentLength, String newStatement) {
 		if (currentLength >= statement.length()) {
@@ -45,7 +45,7 @@ public class WorkBreak {
 		for (String w : dictionary) {
 			dic.add(w);
 		}
-		WorkBreak obj = new WorkBreak();
+		WordBreak obj = new WordBreak();
 		String statement = "iloveicecreamandmango";
 		obj.breakWord(dic, statement, 0, "");
 		obj.breakWord2(dic, statement, 0, 0, "");
