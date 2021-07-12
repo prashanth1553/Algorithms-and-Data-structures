@@ -1,7 +1,5 @@
 package com.smi;
 
-import org.omg.CORBA.Current;
-
 public class UniqueElementsInLinkedList {
 
 	private Node head;
