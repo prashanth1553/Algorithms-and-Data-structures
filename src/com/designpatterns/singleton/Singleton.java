@@ -8,10 +8,13 @@ public class Singleton implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private static Singleton instance1 = new Singleton();
+	private static final Singleton instance1 = new Singleton();
 	private static Singleton lazy;
 
 	private Singleton() {
+		if (lazy != null) {
+			throw new InstantiationError("Creating of this object is not allowed.");
+		}
 
 	}
 
