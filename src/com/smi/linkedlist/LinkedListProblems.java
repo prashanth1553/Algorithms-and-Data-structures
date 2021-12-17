@@ -1,6 +1,6 @@
 package com.smi.linkedlist;
 
-public class ReverseLinkedList {
+public class LinkedListProblems {
 
 	ListNode head;
 
@@ -377,7 +377,7 @@ public class ReverseLinkedList {
 	}
 
 	public static void main(String args[]) {
-		ReverseLinkedList obj = new ReverseLinkedList();
+		LinkedListProblems obj = new LinkedListProblems();
 
 		obj.add(1);
 		
