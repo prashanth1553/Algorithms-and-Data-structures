@@ -42,7 +42,7 @@ public class TinyURL {
 			base62.append(base62To10.get(r));
 			input = input / 62;
 		}
-		String r = base62.reverse().toString();
+		String r = base62.toString();
 		for (int i = r.length(); i < 6; i++) {
 			base62.append(base62To10.get(0));
 		}
@@ -63,7 +63,7 @@ public class TinyURL {
 
 	public static void main(String args[]) {
 		TinyURL obj = new TinyURL();
-		int s = 63;
+		int s = 78;
 		String base62 = obj.toBase62(s);
 		System.out.println("base62 == " + base62);
 		System.out.println("Decimal == " + obj.toDecimal(base62));
